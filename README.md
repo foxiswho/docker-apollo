@@ -19,39 +19,55 @@
 ## 使用 Docker Compose 启动
 建立一个`docker-compose.yaml`文件,内容如下,将mysql数据库地址与库名以及账号密码替换为自己的:
 ``` yaml
-version: '2'
+version: '3.5'
+
 services:
   apollo:
     image: foxiswho/docker-apollo:latest
-    # 目前只能用host模式,否则将出现504错误,如果想改端口,参考下方修改端口的环境变量
-    network_mode: "host"
-    # 如果需要查看日志,挂载容器中的/opt路径出来即可.
-    # volumes:
-    #   - ./logs:/opt
+    container_name: apollo
+    hostname: apollo
+    volumes:
+    - ./data:/opt
+    ports:
+    - "8070:8070"
+    - "8080:8080"
+    - "8090:8090"
+    - "8081:8081"
+    - "8091:8091"
+    - "8082:8082"
+    - "8092:8092"
+    - "8083:8083"
+    - "8093:8093"
+    #restart: always
+# 启动前,确认对应环境的数据库已经建立，否则apollo无法启动.
+# 默认端口:portal:8070; dev:8080,8090; fat:8081,8091; uat:8082,8092; pro:8083,8093
     environment:
-      # 开启Portal,默认端口: 8070
-      PORTAL_DB: jdbc:mysql://192.168.1.28:3306/ApolloPortalDB?characterEncoding=utf8
+      PORTAL_DB: jdbc:mysql://10.0.0.8:3306/ApolloPortalDB?characterEncoding=utf8
       PORTAL_DB_USER: root
-      PORTAL_DB_PWD: toor
-      
-      # 开启dev环境, 默认端口: config 8080, admin 8090
-      DEV_DB: jdbc:mysql://192.168.1.28:3306/ApolloConfigDBDev?characterEncoding=utf8
+      PORTAL_DB_PWD: root
+#      PORTAL_PORT: 80
+
+      DEV_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBDev?characterEncoding=utf8
       DEV_DB_USER: root
-      DEV_DB_PWD: toor
+      DEV_DB_PWD: root
       
-      # 开启fat环境, 默认端口: config 8081, admin 8091
-      FAT_DB: jdbc:mysql://192.168.1.28:3306/ApolloConfigDBFat?characterEncoding=utf8
-      FAT_DB_USER: root
-      FAT_DB_PWD: toor
-      # 可修改端口.
-      FAT_CONFIG_PORT: 8050
-      FAT_ADMIN_PORT: 8051
-           
-      # 指定远程uat地址
-      #UAT_URL: http://192.168.1.2:8080
-      
-      # 指定远程pro地址
-      #PRO_URL: http://www.baidu.com:8080
+#      FAT_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBFat?characterEncoding=utf8
+#      FAT_DB_USER: root
+#      FAT_DB_PWD: root
+#
+#      #UAT_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBUat?characterEncoding=utf8
+#      UAT_DB_USER: root
+#      UAT_DB_PWD: root
+#
+#      #PRO_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBPro?characterEncoding=utf8
+#      PRO_DB_USER: root
+#      PRO_DB_PWD: root
+
+#         #指定远程uat地址
+#        UAT_URL: http://192.168.1.2:8080
+#
+#         #指定远程pro地址
+#        PRO_URL: http://www.baidu.com:8080
 ```
 
 *镜像包含Portal面板,以及Dev,Fat,Uat,Pro环境,皆可独立使用.若要开启相应环境,只需配置对应环境的env的数据库地址与账号密码。*
