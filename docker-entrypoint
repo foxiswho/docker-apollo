@@ -90,7 +90,7 @@ if [ "$#" == "0" ];then
   elif [[ -n "${UAT_DB}" ]];then
     #unzip -o /apollo-adminservice-${VERSION}-github.zip -d /apollo-admin/uat
     #unzip -o /apollo-configservice-${VERSION}-github.zip -d /apollo-config/uat
-    if [ ! -d "/apollo-admin/fat" ];then
+    if [ ! -d "/apollo-admin/uat" ];then
                 cp -rf /apollo-admin/dev/* /apollo-admin/uat/
                 rm -rf /apollo-admin/uat/scripts
                 mv  /apollo-admin/uat/-default /apollo-admin/uat/scripts
@@ -134,7 +134,7 @@ if [ "$#" == "0" ];then
   elif [[ -n "${PRO_DB}" ]];then
     #unzip -o /apollo-adminservice-${VERSION}-github.zip -d /apollo-admin/pro
     #unzip -o /apollo-configservice-${VERSION}-github.zip -d /apollo-config/pro
-    if [ ! -d "/apollo-admin/fat" ];then
+    if [ ! -d "/apollo-admin/pro" ];then
                     cp -rf /apollo-admin/dev/* /apollo-admin/pro/
                     rm -rf /apollo-admin/pro/scripts
                     mv  /apollo-admin/pro/-default /apollo-admin/pro/scripts
