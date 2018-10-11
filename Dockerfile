@@ -44,7 +44,7 @@ RUN cd / && \
             -e "s/^uat\.meta.*/uat.meta=http:\/\/localhost:${CONFIG_UAT_PORT}/" \
             -e "s/^pro\.meta.*/pro.meta=http:\/\/localhost:${CONFIG_PRO_PORT}/" -i /apollo-portal/config/apollo-env.properties && \
     cp -rf /apollo-admin/dev/scripts /apollo-admin/dev/scripts-default  && \
-    cp -rf /apollo-configservice/dev/scripts /apollo-configservice/dev/scripts-default  && \
+    cp -rf /apollo-config/dev/scripts /apollo-config/dev/scripts-default  && \
     #cp -rf /apollo-admin/dev/* /apollo-admin/fat/  && \
     #cp -rf /apollo-admin/dev/* /apollo-admin/uat/  && \
     #cp -rf /apollo-admin/dev/* /apollo-admin/pro/  && \
