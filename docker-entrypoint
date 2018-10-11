@@ -45,6 +45,17 @@ if [ "$#" == "0" ];then
   elif [[ -n "${FAT_DB}" ]];then
     #unzip -o /apollo-adminservice-${VERSION}-github.zip -d /apollo-admin/fat
     #unzip -o /apollo-configservice-${VERSION}-github.zip -d /apollo-config/fat
+    if [ ! -d "/apollo-admin/fat" ];then
+            cp -rf /apollo-admin/dev/* /apollo-admin/fat/
+            rm -rf /apollo-admin/fat/scripts
+            mv  /apollo-admin/fat/-default /apollo-admin/fat/scripts
+            #
+            cp -rf /apollo-config/dev/* /apollo-config/fat/
+            rm -rf /apollo-config/fat/scripts
+            mv  /apollo-config/fat/scripts-default /apollo-config/fat/scripts
+    else
+        echo "已经存在"
+    fi
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${FAT_DB} \"" /apollo-config/fat/scripts/startup.sh
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${FAT_DB} \"" /apollo-admin/fat/scripts/startup.sh
     if [[ -n "${FAT_DB_USER}" ]];then
@@ -79,6 +90,17 @@ if [ "$#" == "0" ];then
   elif [[ -n "${UAT_DB}" ]];then
     #unzip -o /apollo-adminservice-${VERSION}-github.zip -d /apollo-admin/uat
     #unzip -o /apollo-configservice-${VERSION}-github.zip -d /apollo-config/uat
+    if [ ! -d "/apollo-admin/fat" ];then
+                cp -rf /apollo-admin/dev/* /apollo-admin/uat/
+                rm -rf /apollo-admin/uat/scripts
+                mv  /apollo-admin/uat/-default /apollo-admin/uat/scripts
+                #
+                cp -rf /apollo-config/dev/* /apollo-config/uat/
+                rm -rf /apollo-config/uat/scripts
+                mv  /apollo-config/uat/scripts-default /apollo-config/uat/scripts
+    else
+        echo "已经存在"
+    fi
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${UAT_DB} \"" /apollo-config/uat/scripts/startup.sh
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${UAT_DB} \"" /apollo-admin/uat/scripts/startup.sh
     if [[ -n "${UAT_DB_USER}" ]];then
@@ -112,6 +134,17 @@ if [ "$#" == "0" ];then
   elif [[ -n "${PRO_DB}" ]];then
     #unzip -o /apollo-adminservice-${VERSION}-github.zip -d /apollo-admin/pro
     #unzip -o /apollo-configservice-${VERSION}-github.zip -d /apollo-config/pro
+    if [ ! -d "/apollo-admin/fat" ];then
+                    cp -rf /apollo-admin/dev/* /apollo-admin/pro/
+                    rm -rf /apollo-admin/pro/scripts
+                    mv  /apollo-admin/pro/-default /apollo-admin/pro/scripts
+                    #
+                    cp -rf /apollo-config/dev/* /apollo-config/pro/
+                    rm -rf /apollo-config/pro/scripts
+                    mv  /apollo-config/pro/scripts-default /apollo-config/pro/scripts
+        else
+            echo "已经存在"
+        fi
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${PRO_DB} \"" /apollo-config/pro/scripts/startup.sh
     sed -i -e "/^SERVER_PORT=.*$/a\export JAVA_OPTS=\"\$JAVA_OPTS -Dspring.datasource.url=${PRO_DB} \"" /apollo-admin/pro/scripts/startup.sh
     if [[ -n "${PRO_DB_USER}" ]];then

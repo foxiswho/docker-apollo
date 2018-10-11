@@ -43,13 +43,15 @@ RUN cd / && \
             -e "s/^fat\.meta.*/fat.meta=http:\/\/localhost:${CONFIG_FAT_PORT}/" \
             -e "s/^uat\.meta.*/uat.meta=http:\/\/localhost:${CONFIG_UAT_PORT}/" \
             -e "s/^pro\.meta.*/pro.meta=http:\/\/localhost:${CONFIG_PRO_PORT}/" -i /apollo-portal/config/apollo-env.properties && \
-    cp -rf /apollo-admin/dev/* /apollo-admin/fat/  && \
-    cp -rf /apollo-admin/dev/* /apollo-admin/uat/  && \
-    cp -rf /apollo-admin/dev/* /apollo-admin/pro/  && \
-    cp -rf /apollo-config/dev/* /apollo-config/fat/  && \
-    cp -rf /apollo-config/dev/* /apollo-config/uat/  && \
-    cp -rf /apollo-config/dev/* /apollo-config/pro/ && \
-    #rm -rf *zip && \
+    cp -rf /apollo-admin/dev/scripts /apollo-admin/dev/scripts-default  && \
+    cp -rf /apollo-configservice/dev/scripts /apollo-configservice/dev/scripts-default  && \
+    #cp -rf /apollo-admin/dev/* /apollo-admin/fat/  && \
+    #cp -rf /apollo-admin/dev/* /apollo-admin/uat/  && \
+    #cp -rf /apollo-admin/dev/* /apollo-admin/pro/  && \
+    #cp -rf /apollo-config/dev/* /apollo-config/fat/  && \
+    #cp -rf /apollo-config/dev/* /apollo-config/uat/  && \
+    #cp -rf /apollo-config/dev/* /apollo-config/pro/ && \
+    rm -rf *zip && \
     chmod +x  /usr/local/bin/docker-entrypoint
 
 EXPOSE 8070 8080 8081 8082 8083 8090 8091 8092 8093
