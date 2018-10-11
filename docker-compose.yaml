@@ -41,6 +41,12 @@ services:
 #      #PRO_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBPro?characterEncoding=utf8
 #      PRO_DB_USER: root
 #      PRO_DB_PWD: root
+
+#         #指定远程uat地址
+#        UAT_URL: http://192.168.1.2:8080
+#
+#         #指定远程pro地址
+#        PRO_URL: http://www.baidu.com:8080
   mysql:
     image: mariadb:latest
     hostname: mysql

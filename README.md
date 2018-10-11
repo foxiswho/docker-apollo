@@ -1,18 +1,20 @@
 # docker-apollo
 
-[![Docker Build Status](https://img.shields.io/docker/build/idoop/docker-apollo.svg)](https://hub.docker.com/r/idoop/docker-apollo/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/idoop/docker-apollo.svg)](https://hub.docker.com/r/idoop/docker-apollo/)
-[![Docker Automated build](https://img.shields.io/docker/automated/idoop/docker-apollo.svg)](https://hub.docker.com/r/idoop/docker-apollo/)
-[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/idoop/docker-apollo/latest.svg)](https://hub.docker.com/r/idoop/docker-apollo/)
-[![ImageLayers Layers](https://img.shields.io/imagelayers/layers/idoop/docker-apollo/latest.svg)](https://hub.docker.com/r/idoop/docker-apollo/)
+原作者：https://github.com/idoop/docker-apollo
 
-[Docker image](https://hub.docker.com/r/idoop/docker-apollo/) for [Ctrip/Apollo](https://github.com/ctripcorp/apollo)(携程Apollo)
+本docker 是针对 https://github.com/idoop/docker-apollo 的改动
+
+[![Docker Build Status](https://img.shields.io/docker/build/foxiswho/docker-apollo.svg)](https://hub.docker.com/r/foxiswho/docker-apollo/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/foxiswho/docker-apollo.svg)](https://hub.docker.com/r/foxiswho/docker-apollo/)
+[![Docker Automated build](https://img.shields.io/docker/automated/foxiswho/docker-apollo.svg)](https://hub.docker.com/r/foxiswho/docker-apollo/)
+[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/foxiswho/docker-apollo/latest.svg)](https://hub.docker.com/r/foxiswho/docker-apollo/)
+[![ImageLayers Layers](https://img.shields.io/imagelayers/layers/foxiswho/docker-apollo/latest.svg)](https://hub.docker.com/r/foxiswho/docker-apollo/)
+
+[Docker image](https://hub.docker.com/r/foxiswho/docker-apollo/) for [Ctrip/Apollo](https://github.com/ctripcorp/apollo)(携程Apollo)
 
 ## Docker Tags: 
 
-- `1.0.0` `latest`
-- `0.11.0` 
-- `0.10.2`
+- `1.1.0` `latest`
 
 ## 使用 Docker Compose 启动
 建立一个`docker-compose.yaml`文件,内容如下,将mysql数据库地址与库名以及账号密码替换为自己的:
@@ -20,7 +22,7 @@
 version: '2'
 services:
   apollo:
-    image: idoop/docker-apollo:latest
+    image: foxiswho/docker-apollo:latest
     # 目前只能用host模式,否则将出现504错误,如果想改端口,参考下方修改端口的环境变量
     network_mode: "host"
     # 如果需要查看日志,挂载容器中的/opt路径出来即可.
@@ -56,7 +58,7 @@ services:
 
 **启动前确认对应的数据库已建立,且数据库账号有权操作该库,否则将会启动失败.**[创建数据库指导](https://github.com/ctripcorp/apollo/wiki/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97#21-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93)
 
-**详细用法请看[Wiki](https://github.com/idoop/docker-apollo/wiki)**
+**详细用法请看原作者[Wiki](https://github.com/idoop/docker-apollo/wiki)**
 
 ## 资源消耗
 
