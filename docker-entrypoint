@@ -48,7 +48,7 @@ if [ "$#" == "0" ];then
     if [ ! -d "/apollo-admin/fat" ];then
             cp -rf /apollo-admin/dev/* /apollo-admin/fat/
             rm -rf /apollo-admin/fat/scripts
-            mv  /apollo-admin/fat/-default /apollo-admin/fat/scripts
+            mv  /apollo-admin/fat/scripts-default /apollo-admin/fat/scripts
             #
             cp -rf /apollo-config/dev/* /apollo-config/fat/
             rm -rf /apollo-config/fat/scripts
@@ -93,7 +93,7 @@ if [ "$#" == "0" ];then
     if [ ! -d "/apollo-admin/uat" ];then
                 cp -rf /apollo-admin/dev/* /apollo-admin/uat/
                 rm -rf /apollo-admin/uat/scripts
-                mv  /apollo-admin/uat/-default /apollo-admin/uat/scripts
+                mv  /apollo-admin/uat/scripts-default /apollo-admin/uat/scripts
                 #
                 cp -rf /apollo-config/dev/* /apollo-config/uat/
                 rm -rf /apollo-config/uat/scripts
@@ -137,7 +137,7 @@ if [ "$#" == "0" ];then
     if [ ! -d "/apollo-admin/pro" ];then
                     cp -rf /apollo-admin/dev/* /apollo-admin/pro/
                     rm -rf /apollo-admin/pro/scripts
-                    mv  /apollo-admin/pro/-default /apollo-admin/pro/scripts
+                    mv  /apollo-admin/pro/scripts-default /apollo-admin/pro/scripts
                     #
                     cp -rf /apollo-config/dev/* /apollo-config/pro/
                     rm -rf /apollo-config/pro/scripts
