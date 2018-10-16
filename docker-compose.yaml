@@ -29,6 +29,11 @@ services:
       DEV_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBDev?characterEncoding=utf8
       DEV_DB_USER: root
       DEV_DB_PWD: root
+#      # DEV环境若不修改端口，则config默认就是8080，admin是8090
+#      DEV_ADMIN_PORT: 90
+#      DEV_CONFIG_PORT: 80
+#      # 这里用域名也可以，但要保证能被正常解析出IP.
+#      DEV_IP: 10.0.1.99
       
 #      FAT_DB: jdbc:mysql://10.0.0.8:3306/ApolloConfigDBFat?characterEncoding=utf8
 #      FAT_DB_USER: root
