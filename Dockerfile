@@ -45,6 +45,7 @@ RUN cd / && \
             -e "s/^fat\.meta.*/fat.meta=http:\/\/${DEFAULT_HOST}:${CONFIG_FAT_PORT}/" \
             -e "s/^uat\.meta.*/uat.meta=http:\/\/${DEFAULT_HOST}:${CONFIG_UAT_PORT}/" \
             -e "s/^pro\.meta.*/pro.meta=http:\/\/${DEFAULT_HOST}:${CONFIG_PRO_PORT}/" -i /apollo-portal/config/apollo-env.properties && \
+    sed -i -e "s/localhost/${DEFAULT_HOST}/" /apollo-portal/scripts/startup.sh  && \
     cp -rf /apollo-admin/dev/scripts /apollo-admin/dev/scripts-default  && \
     cp -rf /apollo-config/dev/scripts /apollo-config/dev/scripts-default  && \
     #cp -rf /apollo-admin/dev/* /apollo-admin/fat/  && \
